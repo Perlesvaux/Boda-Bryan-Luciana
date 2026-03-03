@@ -41,11 +41,14 @@ body.opened {
 
 .hero h1 {
     font-family: 'Playfair Display', serif;
-    font-size: 48px;
-    color: #ffffff;
-    -webkit-text-stroke: 1.5px #1a1a1a;
-    text-stroke: 1.5px #1a1a1a;
-    text-shadow: none;
+    font-size: 56px;
+    letter-spacing: 2px;
+    background: linear-gradient(180deg, #ffffff 0%, #f3f3f3 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: white;
+    -webkit-text-stroke: 1.8px #1a1a1a;
+    text-stroke: 1.8px #1a1a1a;
+    text-shadow: 0 4px 12px rgba(0,0,0,0.25);
 }
 
 .section {
@@ -153,15 +156,25 @@ footer.visible {
 }
 
 .button {
-  display: inline-block;
-  margin-top: 20px;
-  padding: 14px 28px;
-  background: linear-gradient(45deg, #b8962e, #e6c35c);
-  color: white;
-  text-decoration: none;
-  border-radius: 40px;
-  font-weight: 600;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 14px 28px;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    letter-spacing: 1px;
+    background: linear-gradient(145deg, #c6a23a, #8f6b1c);
+    color: white;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    transform: translate(-50%, -50%) scale(1.05);
+    box-shadow: 0 8px 22px rgba(0,0,0,0.45);
 }
 
 .gallery img {
