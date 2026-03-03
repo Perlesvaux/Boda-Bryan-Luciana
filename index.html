@@ -20,7 +20,7 @@ body.opened {
   background: #f8f5f0;
 }
 
-/* HERO oculto inicialmente */
+/* HERO oculto completamente hasta abrir */
 .hero {
   background-image: url('foto-portada.jpg');
   background-size: cover;
@@ -28,24 +28,46 @@ body.opened {
   padding: 140px 20px;
   color: white;
   opacity: 0;
+  visibility: hidden;
   transform: translateY(40px);
   transition: all 1.5s ease;
 }
 
 .hero.visible {
   opacity: 1;
+  visibility: visible;
   transform: translateY(0);
 }
 
 .hero h1 {
   font-family: 'Great Vibes', cursive;
-  font-size: 65px;
+  font-size: 75px;
   margin: 0;
-  text-shadow: 0 4px 15px rgba(0,0,0,0.4);
+  color: white;
+  -webkit-text-stroke: 1.5px rgba(0,0,0,0.6);
+  text-shadow:
+    0 3px 8px rgba(0,0,0,0.6),
+    0 0 25px rgba(0,0,0,0.4);
 }
 
 .section {
   padding: 60px 20px;
+}
+
+/* Ocultar TODO el contenido hasta abrir */
+#contenido,
+.section:not(#intro),
+footer {
+  opacity: 0;
+  visibility: hidden;
+  transition: all 1.5s ease;
+}
+
+#contenido.visible,
+.section.visible,
+footer.visible {
+  opacity: 1;
+  visibility: visible;
 }
 
 /* ===== SOBRE PREMIUM ===== */
@@ -53,7 +75,7 @@ body.opened {
   perspective: 1200px;
   width: 320px;
   height: 220px;
-  margin: 100px auto;
+  margin: 120px auto;
   position: relative;
   cursor: pointer;
   transition: opacity 1s ease, transform 1s ease;
@@ -65,7 +87,6 @@ body.opened {
   pointer-events: none;
 }
 
-/* textura tipo lino */
 .envelope-base {
   width: 100%;
   height: 100%;
@@ -100,11 +121,10 @@ body.opened {
   z-index: 3;
 }
 
-/* sello dorado realista */
 .seal {
   width: 70px;
   height: 70px;
-  background: radial-gradient(circle at 30% 30%, #fff3b0, #d4af37, #a67c00);
+  background: radial-gradient(circle at 30% 30%, #fff8d6, #d4af37, #8f6b00);
   border-radius: 50%;
   position: absolute;
   left: 50%;
@@ -116,7 +136,7 @@ body.opened {
   justify-content: center;
   font-weight: 600;
   font-size: 20px;
-  color: #fff8dc;
+  color: #fffbe6;
   font-family: 'Playfair Display', serif;
   box-shadow: inset 0 3px 8px rgba(0,0,0,0.4), 0 5px 15px rgba(0,0,0,0.3);
   transition: opacity 0.6s ease;
@@ -128,18 +148,6 @@ body.opened {
 
 .envelope-container.open .seal {
   opacity: 0;
-}
-
-/* CONTENIDO */
-#contenido {
-  opacity: 0;
-  transform: translateY(50px);
-  transition: all 1.5s ease;
-}
-
-#contenido.visible {
-  opacity: 1;
-  transform: translateY(0);
 }
 
 .date {
@@ -195,18 +203,18 @@ footer {
   <a class="button" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Boda+Bryan+y+Luciana&dates=20260627/20260628" target="_blank">Agregar a mi calendario</a>
 </div>
 
-<div class="section">
+<div class="section" id="ubicacion">
   <h2>Ubicación del Evento</h2>
   <a class="button" href="https://maps.app.goo.gl/gLvbVXCNgGFLqSWH7" target="_blank">Ver en Google Maps</a>
 </div>
 
-<div class="section gallery">
+<div class="section gallery" id="galeria">
   <h2>Nuestras Fotos</h2>
   <img src="foto1.jpg">
   <img src="foto2.jpg">
 </div>
 
-<footer>
+<footer id="footer">
   Con amor, 2026
 </footer>
 
@@ -217,10 +225,13 @@ footer {
 <script>
 function abrirInvitacion() {
   const sobre = document.getElementById('sobre');
+  const hero = document.getElementById('hero');
   const contenido = document.getElementById('contenido');
+  const ubicacion = document.getElementById('ubicacion');
+  const galeria = document.getElementById('galeria');
+  const footer = document.getElementById('footer');
   const musica = document.getElementById('musica');
   const intro = document.getElementById('intro');
-  const hero = document.getElementById('hero');
 
   document.body.classList.add('opened');
   sobre.classList.add('open');
@@ -231,8 +242,13 @@ function abrirInvitacion() {
 
   setTimeout(() => {
     intro.style.display = 'none';
+
     hero.classList.add('visible');
     contenido.classList.add('visible');
+    ubicacion.classList.add('visible');
+    galeria.classList.add('visible');
+    footer.classList.add('visible');
+
     window.scrollTo({ top: hero.offsetTop, behavior: 'smooth' });
     musica.play();
   }, 1700);
