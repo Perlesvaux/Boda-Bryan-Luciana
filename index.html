@@ -120,18 +120,23 @@ footer.visible {
 }
 
 .seal {
-    width: 90px;
-    height: 90px;
+    position: absolute;
+    bottom: -45px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 95px;
+    height: 95px;
     border-radius: 50%;
     background: radial-gradient(circle at 30% 30%, #c6a23a 0%, #a67c1f 40%, #7a5a12 75%, #5c430d 100%);
     display: flex;
     align-items: center;
     justify-content: center;
     font-family: 'Playfair Display', serif;
-    font-size: 20px;
+    font-size: 22px;
     letter-spacing: 2px;
     color: #fff8e1;
-    box-shadow: 0 8px 18px rgba(0,0,0,0.35), inset 0 2px 6px rgba(255,255,255,0.25), inset 0 -4px 8px rgba(0,0,0,0.4);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.35), inset 0 2px 6px rgba(255,255,255,0.25), inset 0 -4px 8px rgba(0,0,0,0.4);
+    z-index: 10;
 }
 
 .envelope-container.open .envelope-flap {
