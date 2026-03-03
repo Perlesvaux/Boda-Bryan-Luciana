@@ -33,7 +33,7 @@ body {
   padding: 60px 20px;
 }
 
-/* ===== SOBRE REAL 3D ===== */
+/* ===== SOBRE MEJORADO ===== */
 .envelope-container {
   perspective: 1000px;
   width: 300px;
@@ -41,6 +41,13 @@ body {
   margin: 50px auto;
   position: relative;
   cursor: pointer;
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.envelope-container.fade-out {
+  opacity: 0;
+  transform: scale(0.9);
+  pointer-events: none;
 }
 
 .envelope-base {
@@ -61,7 +68,7 @@ body {
   top: 0;
   clip-path: polygon(0 0, 100% 0, 50% 70%);
   transform-origin: top;
-  transition: transform 1.2s ease;
+  transition: transform 1s ease;
   z-index: 3;
 }
 
@@ -79,31 +86,12 @@ body {
   transition: opacity 0.5s ease;
 }
 
-.letter {
-  width: 90%;
-  height: 90%;
-  background: white;
-  position: absolute;
-  left: 5%;
-  top: 5%;
-  border-radius: 4px;
-  transform: translateY(40px);
-  opacity: 0;
-  transition: all 1s ease;
-  z-index: 1;
-}
-
 .envelope-container.open .envelope-flap {
   transform: rotateX(180deg);
 }
 
 .envelope-container.open .seal {
   opacity: 0;
-}
-
-.envelope-container.open .letter {
-  transform: translateY(-120px);
-  opacity: 1;
 }
 
 /* CONTENIDO */
@@ -153,12 +141,11 @@ footer {
   <h1>Bryan & Luciana</h1>
 </div>
 
-<div class="section">
+<div class="section" id="intro">
   <p>Haz clic en el sobre para abrir la invitación</p>
 
   <div class="envelope-container" id="sobre" onclick="abrirInvitacion()">
     <div class="envelope-base"></div>
-    <div class="letter"></div>
     <div class="envelope-flap"></div>
     <div class="seal"></div>
   </div>
@@ -194,14 +181,20 @@ function abrirInvitacion() {
   const sobre = document.getElementById('sobre');
   const contenido = document.getElementById('contenido');
   const musica = document.getElementById('musica');
+  const intro = document.getElementById('intro');
 
   sobre.classList.add('open');
 
   setTimeout(() => {
+    sobre.classList.add('fade-out');
+  }, 900);
+
+  setTimeout(() => {
+    intro.style.display = 'none';
     contenido.classList.add('visible');
     window.scrollTo({ top: contenido.offsetTop - 50, behavior: 'smooth' });
     musica.play();
-  }, 1300);
+  }, 1500);
 }
 
 // Cuenta regresiva
