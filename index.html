@@ -37,13 +37,13 @@ body::after{
 body::before{ left:0; }
 body::after{ right:0; transform:scaleX(-1); }
 
-/* OCULTAR CONTENIDO HASTA ABRIR */
+/* OCULTO HASTA ABRIR */
 .hero,
 .section,
 footer{
   opacity:0;
   visibility:hidden;
-  transform:translateY(30px);
+  transform:translateY(40px);
   transition:all 1.5s ease;
 }
 
@@ -63,12 +63,20 @@ footer{
 
 /* INTRO */
 #intro{
-  margin-top:60px;
+  margin-top:80px;
+  transition:all 1s ease;
 }
 
+#intro.fade-out{
+  opacity:0;
+  transform:scale(0.95);
+  pointer-events:none;
+}
+
+/* TEXTO ARRIBA */
 #intro p{
   font-family:'Great Vibes',cursive;
-  font-size:28px;
+  font-size:32px;
   margin-bottom:30px;
 }
 
@@ -149,11 +157,10 @@ footer{
 }
 
 .hero h1{
-  font-size:56px;
-  letter-spacing:2px;
-  -webkit-text-stroke:1.8px #000;
-  color:white;
-  text-shadow:0 4px 12px rgba(0,0,0,0.3);
+  font-family:'Great Vibes',cursive;
+  font-size:64px;
+  color:#000;
+  text-shadow:0 3px 10px rgba(0,0,0,0.2);
 }
 
 /* SECCIONES */
@@ -171,11 +178,12 @@ footer{
   margin-top:15px;
 }
 
-/* BOTONES */
+/* BOTONES VERTICALES */
 .button{
-  display:inline-block;
-  margin:15px;
-  padding:14px 28px;
+  display:block;
+  margin:20px auto;
+  width:260px;
+  padding:14px;
   border-radius:30px;
   text-decoration:none;
   font-size:16px;
@@ -251,22 +259,29 @@ footer{
 <script>
 function abrirInvitacion(){
   const sobre=document.getElementById('sobre');
+  const intro=document.getElementById('intro');
+
   sobre.classList.add('open');
 
   setTimeout(()=>{
+    intro.classList.add('fade-out');
+  },800);
+
+  setTimeout(()=>{
+    intro.style.display="none";
     document.getElementById('hero').classList.add('visible');
     document.getElementById('info').classList.add('visible');
     document.getElementById('footer').classList.add('visible');
     window.scrollTo({top:document.getElementById('hero').offsetTop,behavior:'smooth'});
-  },1000);
+  },1600);
 
-  for(let i=0;i<40;i++){
+  for(let i=0;i<50;i++){
     let p=document.createElement('div');
     p.className='petalo';
     p.style.left=Math.random()*100+'vw';
-    p.style.animationDuration=(4+Math.random()*3)+'s';
+    p.style.animationDuration=(5+Math.random()*3)+'s';
     document.body.appendChild(p);
-    setTimeout(()=>p.remove(),7000);
+    setTimeout(()=>p.remove(),8000);
   }
 }
 
