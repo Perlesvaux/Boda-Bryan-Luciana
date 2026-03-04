@@ -4,7 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Invitación de Boda</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Great+Vibes&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Cinzel:wght@500;700&display=swap" rel="stylesheet">
+
 <style>
 body {
   margin: 0;
@@ -13,6 +15,7 @@ body {
   color: #444;
   text-align: center;
   overflow-x: hidden;
+  overflow-y: hidden; /* Bloqueado hasta abrir */
   transition: background 1.5s ease;
 }
 
@@ -20,12 +23,12 @@ body.opened {
   background: #f8f5f0;
 }
 
-/* HERO oculto completamente hasta abrir */
+/* HERO oculto hasta abrir */
 .hero {
   background-image: url('foto-portada.jpg');
   background-size: cover;
   background-position: center;
-  padding: 140px 20px;
+  padding: 160px 20px;
   color: white;
   opacity: 0;
   visibility: hidden;
@@ -40,22 +43,16 @@ body.opened {
 }
 
 .hero h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: 56px;
-    letter-spacing: 2px;
-    background: linear-gradient(180deg, #ffffff 0%, #f3f3f3 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: white;
-    -webkit-text-stroke: 1.8px #1a1a1a;
-    text-stroke: 1.8px #1a1a1a;
-    text-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  font-family: 'Cinzel', serif;
+  font-size: 64px;
+  letter-spacing: 3px;
+  color: white;
+  text-shadow:
+      0 2px 4px rgba(0,0,0,0.3),
+      0 6px 18px rgba(0,0,0,0.35);
 }
 
-.section {
-  padding: 60px 20px;
-}
-
-/* Ocultar TODO el contenido hasta abrir */
+/* Ocultar contenido hasta abrir */
 #contenido,
 #ubicacion,
 #galeria,
@@ -75,14 +72,8 @@ footer.visible {
   transform: translateY(0);
 }
 
-#contenido.visible,
-.section.visible,
-footer.visible {
-  opacity: 1;
-  visibility: visible;
-}
+/* ===== SOBRE ===== */
 
-/* ===== SOBRE PREMIUM ===== */
 .envelope-container {
   perspective: 1200px;
   width: 320px;
@@ -102,13 +93,7 @@ footer.visible {
 .envelope-base {
   width: 100%;
   height: 100%;
-  background: repeating-linear-gradient(
-    45deg,
-    #f1e7d8,
-    #f1e7d8 2px,
-    #ede2d2 2px,
-    #ede2d2 4px
-  );
+  background: linear-gradient(145deg, #f1e7d8, #e6d8c3);
   border-radius: 8px;
   position: absolute;
   bottom: 0;
@@ -118,13 +103,7 @@ footer.visible {
 .envelope-flap {
   width: 100%;
   height: 100%;
-  background: repeating-linear-gradient(
-    -45deg,
-    #e8dcc8,
-    #e8dcc8 2px,
-    #e2d5c0 2px,
-    #e2d5c0 4px
-  );
+  background: linear-gradient(145deg, #e8dcc8, #d8c8b3);
   position: absolute;
   top: 0;
   clip-path: polygon(0 0, 100% 0, 50% 70%);
@@ -133,24 +112,28 @@ footer.visible {
   z-index: 3;
 }
 
+/* Sello tipo cera real */
 .seal {
-    position: absolute;
-    top: 52%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 45px;
-    height: 45px;
-    border-radius: 50% 45% 55% 48%;
-    background: radial-gradient(circle at 30% 25%, #e0b84f 0%, #c9972b 30%, #9c6f1a 65%, #7a5513 100%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Playfair Display', serif;
-    font-size: 11px;
-    letter-spacing: 1px;
-    color: #fff6d5;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.35), inset 0 3px 5px rgba(255,255,255,0.3), inset 0 -3px 6px rgba(0,0,0,0.45);
-    z-index: 10;
+  position: absolute;
+  top: 52%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #f1c75b 0%, #c9972b 35%, #9c6f1a 70%, #7a5513 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Cinzel', serif;
+  font-size: 14px;
+  letter-spacing: 2px;
+  color: #fff8dc;
+  box-shadow:
+    0 8px 20px rgba(0,0,0,0.4),
+    inset 0 4px 6px rgba(255,255,255,0.3),
+    inset 0 -6px 10px rgba(0,0,0,0.5);
+  z-index: 10;
 }
 
 .envelope-container.open .envelope-flap {
@@ -161,31 +144,34 @@ footer.visible {
   opacity: 0;
 }
 
+/* Secciones */
+.section {
+  padding: 60px 20px;
+}
+
 .date {
   font-size: 28px;
   margin-top: 20px;
 }
 
+/* Botones centrados correctamente */
 .button {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 14px 28px;
-    border-radius: 30px;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-    letter-spacing: 1px;
-    background: linear-gradient(145deg, #c6a23a, #8f6b1c);
-    color: white;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.35);
-    transition: all 0.3s ease;
+  display: inline-block;
+  margin-top: 25px;
+  padding: 14px 28px;
+  border-radius: 30px;
+  font-size: 16px;
+  letter-spacing: 1px;
+  background: linear-gradient(145deg, #c6a23a, #8f6b1c);
+  color: white;
+  text-decoration: none;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+  transition: all 0.3s ease;
 }
 
-button:hover {
-    transform: translate(-50%, -50%) scale(1.05);
-    box-shadow: 0 8px 22px rgba(0,0,0,0.45);
+.button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.45);
 }
 
 .gallery img {
@@ -202,6 +188,7 @@ footer {
 }
 </style>
 </head>
+
 <body>
 
 <div class="section" id="intro">
@@ -255,6 +242,8 @@ function abrirInvitacion() {
   const intro = document.getElementById('intro');
 
   document.body.classList.add('opened');
+  document.body.style.overflowY = "auto"; // activar scroll
+
   sobre.classList.add('open');
 
   setTimeout(() => {
@@ -275,7 +264,7 @@ function abrirInvitacion() {
   }, 1700);
 }
 
-// Cuenta regresiva
+/* Cuenta regresiva */
 const fechaBoda = new Date("June 27, 2026 00:00:00").getTime();
 const contador = document.createElement('div');
 contador.style.fontSize = '22px';
@@ -285,8 +274,10 @@ document.querySelector('.date').after(contador);
 setInterval(() => {
   const ahora = new Date().getTime();
   const diferencia = fechaBoda - ahora;
+
   const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
   const horas = Math.floor((diferencia / (1000 * 60 * 60)) % 24);
+
   contador.innerHTML = `Faltan ${dias} días y ${horas} horas`;
 }, 1000);
 </script>
