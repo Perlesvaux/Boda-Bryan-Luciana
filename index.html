@@ -3,303 +3,302 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Invitación de Boda</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Great+Vibes&display=swap" rel="stylesheet">
+<title>Bryan & Luciana</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Great+Vibes&display=swap" rel="stylesheet">
+
 <style>
-body {
-margin: 0;
-font-family: 'Playfair Display', serif;
-background: #f3efe8;
-color: #444;
-text-align: center;
-overflow-x: hidden;
-transition: background 1.5s ease;
+
+body{
+margin:0;
+background:#f3efe8;
+font-family:'Playfair Display',serif;
+color:#2e2e2e;
+overflow-x:hidden;
+scroll-behavior:smooth;
 }
 
-body.opened {
-background: #f8f5f0;
+/* ================= SOBRE ================= */
+
+#envelope-container{
+position:fixed;
+width:100%;
+height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+flex-direction:column;
+background:#f3efe8;
+z-index:10;
 }
 
-/* HERO oculto completamente hasta abrir */
-.hero {
-background-image: url('foto-portada.jpg');
-background-size: cover;
-background-position: center;
-padding: 140px 20px;
-color: white;
-opacity: 0;
-visibility: hidden;
-transform: translateY(40px);
-transition: all 1.5s ease;
+#instruction{
+margin-bottom:40px;
+font-size:18px;
+color:#444;
 }
 
-.hero.visible {
-opacity: 1;
-visibility: visible;
-transform: translateY(0);
+.envelope{
+width:420px;
+height:250px;
+background:#e6dccd;
+position:relative;
+cursor:pointer;
+border-radius:6px;
+box-shadow:0 15px 40px rgba(0,0,0,0.15);
+overflow:hidden;
 }
 
-.hero h1 {
-font-family: 'Playfair Display', serif;
-font-size: 56px;
-letter-spacing: 2px;
-background: linear-gradient(180deg, #ffffff 0%, #f3f3f3 100%);
--webkit-background-clip: text;
--webkit-text-fill-color: white;
--webkit-text-stroke: 1.8px #1a1a1a;
-text-stroke: 1.8px #1a1a1a;
-text-shadow: 0 4px 12px rgba(0,0,0,0.25);
+.flap{
+position:absolute;
+top:0;
+width:100%;
+height:100%;
+background:#d9ccb8;
+clip-path:polygon(0 0,100% 0,50% 55%);
+transition:1s ease;
+transform-origin:top;
 }
 
-.section {
-padding: 60px 20px;
+.seal{
+position:absolute;
+top:52%;
+left:50%;
+transform:translate(-50%,-50%);
+width:70px;
+height:70px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+font-weight:600;
+color:white;
+font-size:17px;
+background:radial-gradient(circle at 30% 30%, #e2b44a, #b8831c 70%);
+box-shadow:
+inset -3px -4px 8px rgba(0,0,0,0.4),
+inset 3px 3px 6px rgba(255,230,150,0.5),
+0 6px 15px rgba(0,0,0,0.3);
+transition:0.6s;
 }
 
-/* Ocultar TODO el contenido hasta abrir */
-#contenido,
-#ubicacion,
-#galeria,
-footer {
-opacity: 0;
-visibility: hidden;
-transform: translateY(30px);
-transition: all 1.5s ease;
+/* ================= CONTENIDO ================= */
+
+#content{
+display:none;
+padding-top:120px;
 }
 
-#contenido.visible,
-#ubicacion.visible,
-#galeria.visible,
-footer.visible {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
+.section{
+min-height:100vh;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+padding:60px 20px;
+text-align:center;
 }
 
-#contenido.visible,
-.section.visible,
-footer.visible {
-opacity: 1;
-visibility: visible;
+/* ================= HERO ================= */
+
+.names{
+font-family:'Great Vibes',cursive;
+font-size:72px;
+color:white;
+-webkit-text-stroke:1.3px black;
+margin-bottom:25px;
 }
 
-/* ===== SOBRE PREMIUM ===== */
-.envelope-container {
-perspective: 1200px;
-width: 320px;
-height: 220px;
-margin: 120px auto;
-position: relative;
-cursor: pointer;
-transition: opacity 1s ease, transform 1s ease;
+.subtitle{
+font-size:22px;
+margin:10px 0;
 }
 
-.envelope-container.fade-out {
-opacity: 0;
-transform: scale(0.95);
-pointer-events: none;
+.countdown{
+margin-top:20px;
+font-size:18px;
 }
 
-.envelope-base {
-width: 100%;
-height: 100%;
-background: repeating-linear-gradient(
-45deg,
-#f1e7d8,
-#f1e7d8 2px,
-#ede2d2 2px,
-#ede2d2 4px
-);
-border-radius: 8px;
-position: absolute;
-bottom: 0;
-box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+/* ================= BOTONES FINOS ================= */
+
+.button{
+display:inline-block;
+margin:20px 10px;
+padding:10px 26px;
+border:1px solid #b48a3a;
+color:#b48a3a;
+text-decoration:none;
+border-radius:30px;
+font-size:15px;
+transition:0.3s;
 }
 
-.envelope-flap {
-width: 100%;
-height: 100%;
-background: repeating-linear-gradient(
--45deg,
-#e8dcc8,
-#e8dcc8 2px,
-#e2d5c0 2px,
-#e2d5c0 4px
-);
-position: absolute;
-top: 0;
-clip-path: polygon(0 0, 100% 0, 50% 70%);
-transform-origin: top;
-transition: transform 1.2s ease;
-z-index: 3;
+.button:hover{
+background:#b48a3a;
+color:white;
 }
 
-.seal {
-position: absolute;
-    top: 50%;
-    top: 52%;
-left: 50%;
-transform: translate(-50%, -50%);
-    left: 50%;
-    transform: translateX(-50%);
-    width: 95px;
-    height: 95px;
-    border-radius: 50%;
-    background: radial-gradient(circle at 30% 30%, #c6a23a 0%, #a67c1f 40%, #7a5a12 75%, #5c430d 100%);
-    width: 45px;
-    height: 45px;
-    border-radius: 50% 45% 55% 48%;
-    background: radial-gradient(circle at 30% 25%, #e0b84f 0%, #c9972b 30%, #9c6f1a 65%, #7a5513 100%);
-display: flex;
-align-items: center;
-justify-content: center;
-font-family: 'Playfair Display', serif;
-    font-size: 22px;
-    letter-spacing: 2px;
-    color: #fff8e1;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.35), inset 0 2px 6px rgba(255,255,255,0.25), inset 0 -4px 8px rgba(0,0,0,0.4);
-    font-size: 11px;
-    letter-spacing: 1px;
-    color: #fff6d5;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.35), inset 0 3px 5px rgba(255,255,255,0.3), inset 0 -3px 6px rgba(0,0,0,0.45);
-z-index: 10;
+/* ================= GALERÍA ================= */
+
+.gallery{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+width:85%;
+max-width:1000px;
+margin-top:40px;
 }
 
-.envelope-container.open .envelope-flap {
-transform: rotateX(180deg);
+.gallery img{
+width:100%;
+border-radius:12px;
 }
 
-.envelope-container.open .seal {
-opacity: 0;
+/* ================= BORDE INFERIOR ================= */
+
+.footer-love{
+margin-top:120px;
+padding:40px 0;
+font-family:'Great Vibes',cursive;
+font-size:36px;
+border-top:1px solid #d8cfc1;
+color:#b48a3a;
 }
 
-.date {
-font-size: 28px;
-margin-top: 20px;
+/* ================= PÉTALOS ================= */
+
+.petal{
+position:fixed;
+top:-10px;
+width:12px;
+height:12px;
+background:#d88aa3;
+border-radius:50%;
+opacity:0.8;
+animation:fall linear forwards;
 }
 
-.button {
-position: absolute;
-top: 50%;
-left: 50%;
-transform: translate(-50%, -50%);
-padding: 14px 28px;
-border-radius: 30px;
-border: none;
-cursor: pointer;
-font-size: 16px;
-letter-spacing: 1px;
-background: linear-gradient(145deg, #c6a23a, #8f6b1c);
-color: white;
-box-shadow: 0 6px 18px rgba(0,0,0,0.35);
-transition: all 0.3s ease;
+@keyframes fall{
+to{
+transform:translateY(110vh) rotate(360deg);
+opacity:0;
+}
 }
 
-button:hover {
-transform: translate(-50%, -50%) scale(1.05);
-box-shadow: 0 8px 22px rgba(0,0,0,0.45);
-}
-
-.gallery img {
-width: 90%;
-max-width: 320px;
-margin: 12px;
-border-radius: 20px;
-}
-
-footer {
-padding: 40px;
-font-size: 14px;
-background: #eae3d8;
-}
 </style>
 </head>
+
 <body>
 
-<div class="section" id="intro">
-<p>Haz clic en el sobre para abrir la invitación</p>
+<!-- SOBRE -->
+<div id="envelope-container">
+<div id="instruction">Haz clic en el sobre para abrir la invitación</div>
 
-<div class="envelope-container" id="sobre" onclick="abrirInvitacion()">
-<div class="envelope-base"></div>
-<div class="envelope-flap"></div>
+<div class="envelope" onclick="openInvitation()">
+<div class="flap" id="flap"></div>
 <div class="seal">B & L</div>
 </div>
 </div>
 
-<div class="hero" id="hero">
-<h1>Bryan & Luciana</h1>
+<!-- CONTENIDO -->
+<div id="content">
+
+<section class="section">
+
+<div class="names">Bryan & Luciana</div>
+
+<div class="subtitle">Con la bendición de nuestras familias</div>
+<div class="subtitle">27 de Junio 2026</div>
+<div class="subtitle">4:30 PM</div>
+
+<a class="button" href="https://maps.app.goo.gl/gLvbVXCNgGFLqSWH7" target="_blank">
+Ver ubicación
+</a>
+
+<a class="button" onclick="addToCalendar()">
+Agregar al Calendario
+</a>
+
+<div id="countdown" class="countdown"></div>
+
+</section>
+
+<!-- GALERÍA -->
+<section class="section">
+<h2>Nuestros Momentos</h2>
+
+<div class="gallery">
+<!-- AQUÍ PUEDES AGREGAR FOTOS LUEGO -->
+</div>
+</section>
+
+<div class="footer-love">
+Con amor
 </div>
 
-<div id="contenido" class="section">
-<h2>Nos casamos el día:</h2>
-<div class="date">Sábado, 27 de junio 2026</div>
-<a class="button" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Boda+Bryan+y+Luciana&dates=20260627/20260628" target="_blank">Agregar a mi calendario</a>
 </div>
-
-<div class="section" id="ubicacion">
-<h2>Ubicación del Evento</h2>
-<a class="button" href="https://maps.app.goo.gl/gLvbVXCNgGFLqSWH7" target="_blank">Ver en Google Maps</a>
-</div>
-
-<div class="section gallery" id="galeria">
-<h2>Nuestras Fotos</h2>
-<img src="foto1.jpg">
-<img src="foto2.jpg">
-</div>
-
-<footer id="footer">
-Con amor, 2026
-</footer>
-
-<audio id="musica" loop>
-<source src="musica.mp3" type="audio/mpeg">
-</audio>
 
 <script>
-function abrirInvitacion() {
-const sobre = document.getElementById('sobre');
-const hero = document.getElementById('hero');
-const contenido = document.getElementById('contenido');
-const ubicacion = document.getElementById('ubicacion');
-const galeria = document.getElementById('galeria');
-const footer = document.getElementById('footer');
-const musica = document.getElementById('musica');
-const intro = document.getElementById('intro');
 
-document.body.classList.add('opened');
-sobre.classList.add('open');
-
-setTimeout(() => {
-sobre.classList.add('fade-out');
-}, 1000);
-
-setTimeout(() => {
-intro.style.display = 'none';
-
-hero.classList.add('visible');
-contenido.classList.add('visible');
-ubicacion.classList.add('visible');
-galeria.classList.add('visible');
-footer.classList.add('visible');
-
-window.scrollTo({ top: hero.offsetTop, behavior: 'smooth' });
-musica.play();
-}, 1700);
+/* Siempre volver al sobre */
+window.onload=function(){
+document.getElementById("content").style.display="none";
+document.getElementById("envelope-container").style.display="flex";
 }
 
-// Cuenta regresiva
-const fechaBoda = new Date("June 27, 2026 00:00:00").getTime();
-const contador = document.createElement('div');
-contador.style.fontSize = '22px';
-contador.style.marginTop = '20px';
-document.querySelector('.date').after(contador);
+/* Abrir invitación */
+function openInvitation(){
+document.getElementById("flap").style.transform="rotateX(180deg)";
+document.querySelector(".seal").style.opacity="0";
+createPetals();
 
-setInterval(() => {
-const ahora = new Date().getTime();
-const diferencia = fechaBoda - ahora;
-const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
-const horas = Math.floor((diferencia / (1000 * 60 * 60)) % 24);
-contador.innerHTML = `Faltan ${dias} días y ${horas} horas`;
-}, 1000);
+setTimeout(()=>{
+document.getElementById("envelope-container").style.display="none";
+document.getElementById("content").style.display="block";
+},1000);
+}
+
+/* Pétalos */
+function createPetals(){
+for(let i=0;i<25;i++){
+let petal=document.createElement("div");
+petal.classList.add("petal");
+petal.style.left=Math.random()*100+"vw";
+petal.style.animationDuration=(3+Math.random()*3)+"s";
+document.body.appendChild(petal);
+setTimeout(()=>{petal.remove();},6000);
+}
+}
+
+/* Cuenta regresiva */
+var eventDate=new Date("June 27, 2026 16:30:00").getTime();
+
+setInterval(function(){
+var now=new Date().getTime();
+var distance=eventDate-now;
+
+var days=Math.floor(distance/(1000*60*60*24));
+var hours=Math.floor((distance%(1000*60*60*24))/(1000*60*60));
+var minutes=Math.floor((distance%(1000*60*60))/(1000*60));
+
+document.getElementById("countdown").innerHTML=
+"Faltan "+days+" días "+hours+"h "+minutes+"m";
+},1000);
+
+/* Calendario */
+function addToCalendar(){
+var start="20260627T163000";
+var end="20260627T213000";
+
+var url="https://calendar.google.com/calendar/render?action=TEMPLATE"
++"&text=Boda Bryan y Luciana"
++"&dates="+start+"/"+end
++"&details=Nos encantaría que nos acompañes"
++"&location=https://maps.app.goo.gl/gLvbVXCNgGFLqSWH7";
+
+window.open(url);
+}
+
 </script>
 
 </body>
