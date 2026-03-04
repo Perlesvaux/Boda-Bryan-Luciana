@@ -8,12 +8,14 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Great+Vibes&display=swap" rel="stylesheet">
 
 <style>
+
 body{
 margin:0;
 background:#f3efe8;
 font-family:'Playfair Display',serif;
-text-align:center;
+color:#333;
 overflow-x:hidden;
+scroll-behavior:smooth;
 }
 
 /* ================= SOBRE ================= */
@@ -73,9 +75,7 @@ font-weight:600;
 color:white;
 font-size:17px;
 
-/* sello estilo anterior elegante */
-background:
-radial-gradient(circle at 30% 30%, #e2b44a, #b8831c 70%);
+background:radial-gradient(circle at 30% 30%, #e2b44a, #b8831c 70%);
 box-shadow:
 inset -3px -4px 8px rgba(0,0,0,0.4),
 inset 3px 3px 6px rgba(255,230,150,0.5),
@@ -83,53 +83,66 @@ inset 3px 3px 6px rgba(255,230,150,0.5),
 transition:0.6s;
 }
 
+/* ================= SECCIONES ================= */
+
+.section{
+min-height:100vh;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+padding:60px 20px;
+text-align:center;
+}
+
 /* ================= HERO ================= */
-
-#hero{
-display:none;
-padding:120px 20px;
-position:relative;
-}
-
-/* Laureles verdes */
-
-.laurel-left,
-.laurel-right{
-position:absolute;
-top:50%;
-transform:translateY(-50%);
-font-size:120px;
-color:#2f5d3a;
-opacity:0.15;
-}
-
-.laurel-left{ left:5%; }
-.laurel-right{ right:5%; }
-
-/* NOMBRES */
 
 .names{
 font-family:'Great Vibes',cursive;
-font-size:68px;
+font-size:70px;
 color:white;
 -webkit-text-stroke:1.3px black;
-margin-bottom:30px;
+margin-bottom:20px;
 }
 
-/* DETALLES */
-
-.details{
-font-size:20px;
+.subtitle{
+font-size:22px;
+margin:10px 0;
 }
 
-button{
-margin-top:30px;
-padding:12px 25px;
-border:none;
+/* ================= BOTONES ELEGANTES ================= */
+
+.button{
+display:inline-block;
+margin:15px 10px;
+padding:12px 28px;
+border:1px solid #b48a3a;
+color:#b48a3a;
+text-decoration:none;
+border-radius:30px;
+transition:0.3s;
+font-size:16px;
+}
+
+.button:hover{
 background:#b48a3a;
 color:white;
-border-radius:5px;
-cursor:pointer;
+}
+
+/* ================= GALERIA FUTURA ================= */
+
+.gallery{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+width:90%;
+max-width:1000px;
+margin-top:40px;
+}
+
+.gallery img{
+width:100%;
+border-radius:10px;
 }
 
 /* ================= PÉTALOS ================= */
@@ -157,6 +170,7 @@ opacity:0;
 
 <body>
 
+<!-- SOBRE -->
 <div id="envelope-container">
 <div id="instruction">Haz clic en el sobre para abrir la invitación</div>
 
@@ -166,34 +180,46 @@ opacity:0;
 </div>
 </div>
 
-<div id="hero">
+<!-- HERO -->
+<div id="content" style="display:none">
 
-<div class="laurel-left">❧</div>
-<div class="laurel-right">❧</div>
-
+<section class="section">
 <div class="names">Bryan & Luciana</div>
+<div class="subtitle">27 de Junio 2026</div>
+<div class="subtitle">4:30 PM</div>
 
-<div class="details">
-<p>27 de Junio 2026</p>
-<p>4:30 PM</p>
-
-<p>
-<a href="https://maps.app.goo.gl/gLvbVXCNgGFLqSWH7" target="_blank">
+<a class="button" href="https://maps.app.goo.gl/gLvbVXCNgGFLqSWH7" target="_blank">
 Ver ubicación
 </a>
-</p>
 
-<p id="countdown"></p>
+<a class="button" onclick="addToCalendar()">
+Agregar al Calendario
+</a>
 
-<button onclick="addToCalendar()">Agregar al Calendario</button>
+<p id="countdown" style="margin-top:20px;"></p>
+</section>
+
+<!-- SECCION FOTOS FUTURA -->
+<section class="section">
+<h2>Nuestros Momentos</h2>
+
+<div class="gallery">
+<!-- AQUÍ LUEGO PUEDES AGREGAR FOTOS -->
+<!-- Ejemplo:
+<img src="foto1.jpg">
+<img src="foto2.jpg">
+-->
 </div>
+
+</section>
+
 </div>
 
 <script>
 
 /* Siempre volver al sobre */
 window.onload=function(){
-document.getElementById("hero").style.display="none";
+document.getElementById("content").style.display="none";
 document.getElementById("envelope-container").style.display="flex";
 }
 
@@ -201,12 +227,11 @@ document.getElementById("envelope-container").style.display="flex";
 function openInvitation(){
 document.getElementById("flap").style.transform="rotateX(180deg)";
 document.querySelector(".seal").style.opacity="0";
-
 createPetals();
 
 setTimeout(()=>{
 document.getElementById("envelope-container").style.display="none";
-document.getElementById("hero").style.display="block";
+document.getElementById("content").style.display="block";
 },1000);
 }
 
@@ -218,7 +243,6 @@ petal.classList.add("petal");
 petal.style.left=Math.random()*100+"vw";
 petal.style.animationDuration=(3+Math.random()*3)+"s";
 document.body.appendChild(petal);
-
 setTimeout(()=>{petal.remove();},6000);
 }
 }
@@ -238,7 +262,7 @@ document.getElementById("countdown").innerHTML=
 "Faltan "+days+" días "+hours+"h "+minutes+"m";
 },1000);
 
-/* Calendario 4:30 PM */
+/* Calendario */
 function addToCalendar(){
 var start="20260627T163000";
 var end="20260627T213000";
