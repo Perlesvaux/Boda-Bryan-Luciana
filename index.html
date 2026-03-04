@@ -17,7 +17,7 @@ body{
   overflow-x:hidden;
 }
 
-/* ===== LAURELES LATERALES ===== */
+/* LAURELES LATERALES */
 body::before,
 body::after{
   content:"";
@@ -37,7 +37,23 @@ body::after{
 body::before{ left:0; }
 body::after{ right:0; transform:scaleX(-1); }
 
-/* BORDE MORADO INFERIOR */
+/* OCULTAR CONTENIDO HASTA ABRIR */
+.hero,
+.section,
+footer{
+  opacity:0;
+  visibility:hidden;
+  transform:translateY(30px);
+  transition:all 1.5s ease;
+}
+
+.visible{
+  opacity:1 !important;
+  visibility:visible !important;
+  transform:translateY(0) !important;
+}
+
+/* BORDE MORADO */
 footer{
   background:#eae3d8;
   border-top:6px solid #7c5a92;
@@ -54,10 +70,9 @@ footer{
   font-family:'Great Vibes',cursive;
   font-size:28px;
   margin-bottom:30px;
-  text-align:center;
 }
 
-/* ===== SOBRE ===== */
+/* SOBRE */
 .envelope-container{
   perspective:1200px;
   width:320px;
@@ -204,11 +219,11 @@ footer{
   </div>
 </div>
 
-<div class="hero">
+<div class="hero" id="hero">
   <h1>Bryan & Luciana</h1>
 </div>
 
-<div class="section">
+<div class="section" id="info">
   <h2>Nos casamos el día</h2>
   <div class="date">Sábado, 27 de junio 2026</div>
   <div id="contador"></div>
@@ -219,12 +234,17 @@ footer{
   </a>
 
   <a class="button" target="_blank"
+  href="https://maps.app.goo.gl/gLvbVXCNgGFLqSWH7">
+  Ver ubicación
+  </a>
+
+  <a class="button" target="_blank"
   href="https://wa.me/1234567890?text=Hola%20Bryan%20y%20Luciana,%20confirmo%20mi%20asistencia%20a%20su%20boda">
   Confirmar asistencia (RSVP)
   </a>
 </div>
 
-<footer>
+<footer id="footer">
   Con amor, 2026
 </footer>
 
@@ -233,7 +253,13 @@ function abrirInvitacion(){
   const sobre=document.getElementById('sobre');
   sobre.classList.add('open');
 
-  // PETALOS
+  setTimeout(()=>{
+    document.getElementById('hero').classList.add('visible');
+    document.getElementById('info').classList.add('visible');
+    document.getElementById('footer').classList.add('visible');
+    window.scrollTo({top:document.getElementById('hero').offsetTop,behavior:'smooth'});
+  },1000);
+
   for(let i=0;i<40;i++){
     let p=document.createElement('div');
     p.className='petalo';
@@ -244,7 +270,6 @@ function abrirInvitacion(){
   }
 }
 
-// CUENTA REGRESIVA
 const fechaBoda=new Date("June 27, 2026 16:30:00").getTime();
 const contador=document.getElementById("contador");
 
