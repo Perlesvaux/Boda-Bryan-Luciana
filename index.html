@@ -14,30 +14,28 @@ body{
   background:#f3efe8;
   color:#444;
   text-align:center;
-  overflow:hidden; /* BLOQUEA SCROLL */
+  overflow:hidden;
 }
 
-/* ===== LAURELES COMPLETOS ===== */
+/* ===== BARRAS VERDES LATERALES ===== */
 body::before,
 body::after{
   content:"";
   position:fixed;
   top:0;
-  width:100px;
+  width:14px;
   height:100vh;
-  background:
-    radial-gradient(circle at 50% 5%, rgba(120,140,90,0.4) 10px, transparent 11px),
-    radial-gradient(circle at 40% 20%, rgba(120,140,90,0.4) 10px, transparent 11px),
-    radial-gradient(circle at 60% 35%, rgba(120,140,90,0.4) 10px, transparent 11px),
-    radial-gradient(circle at 45% 50%, rgba(120,140,90,0.4) 10px, transparent 11px),
-    radial-gradient(circle at 55% 65%, rgba(120,140,90,0.4) 10px, transparent 11px),
-    radial-gradient(circle at 50% 80%, rgba(120,140,90,0.4) 10px, transparent 11px);
-  background-repeat:no-repeat;
-  pointer-events:none;
+  background:#9aa77a;
   z-index:0;
 }
-body::before{ left:0; }
-body::after{ right:0; transform:scaleX(-1); }
+
+body::before{
+  left:0;
+}
+
+body::after{
+  right:0;
+}
 
 /* CONTENIDO OCULTO */
 .hero,
@@ -157,12 +155,13 @@ footer{
   background:#f8f5f0;
 }
 
+/* ===== TIPOGRAFIA EXACTA ===== */
 .hero h1{
   font-family:'Great Vibes',cursive;
-  font-size:70px;
+  font-size:72px;
   color:white;
-  -webkit-text-stroke:2px black;
-  text-shadow:0 4px 12px rgba(0,0,0,0.3);
+  -webkit-text-stroke:1.4px black;
+  text-shadow:0 4px 10px rgba(0,0,0,0.25);
 }
 
 /* SECCIONES */
@@ -218,6 +217,7 @@ footer{
 }
 </style>
 </head>
+
 <body>
 
 <div id="intro">
@@ -235,7 +235,9 @@ footer{
 
 <div class="section" id="info">
   <h2>Nos casamos el día</h2>
+
   <div class="date">Sábado, 27 de junio 2026</div>
+
   <div id="contador"></div>
 
   <a class="button" target="_blank"
@@ -260,6 +262,7 @@ footer{
 
 <script>
 function abrirInvitacion(){
+
   const sobre=document.getElementById('sobre');
   const intro=document.getElementById('intro');
 
@@ -271,11 +274,10 @@ function abrirInvitacion(){
 
   setTimeout(()=>{
     intro.style.display="none";
-    document.body.style.overflow="auto"; // ACTIVA SCROLL
+    document.body.style.overflow="auto";
     document.getElementById('hero').classList.add('visible');
     document.getElementById('info').classList.add('visible');
     document.getElementById('footer').classList.add('visible');
-    window.scrollTo({top:document.getElementById('hero').offsetTop,behavior:'smooth'});
   },1600);
 
   for(let i=0;i<50;i++){
@@ -289,14 +291,17 @@ function abrirInvitacion(){
 }
 
 const fechaBoda=new Date("June 27, 2026 16:30:00").getTime();
-const contador=document.getElementById("contador");
 
 setInterval(()=>{
   const ahora=new Date().getTime();
   const dif=fechaBoda-ahora;
+
   const dias=Math.floor(dif/(1000*60*60*24));
   const horas=Math.floor((dif/(1000*60*60))%24);
-  contador.innerHTML=`Faltan ${dias} días y ${horas} horas`;
+
+  document.getElementById("contador").innerHTML=
+  `Faltan ${dias} días y ${horas} horas`;
+
 },1000);
 </script>
 
