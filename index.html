@@ -18,7 +18,7 @@ body {
   background:#f3efe8;
   color:#444;
   text-align:center;
-  overflow-x:hidden;
+  overflow:hidden;   /* bloquea el scroll */
   transition:background 1.5s ease;
 }
 
@@ -267,7 +267,13 @@ Con amor, 2026
 /* FORZAR ESTADO INICIAL AL RECARGAR */
 
 window.onload=function(){
+
 window.scrollTo(0,0)
+
+document.body.style.overflow="hidden"
+
+document.getElementById("intro").style.display="block"
+
 }
 
 /* ABRIR SOBRE */
