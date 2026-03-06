@@ -12,154 +12,29 @@
 
 body{
 margin:0;
-padding:0 140px;
-box-sizing:border-box;
 font-family:'Playfair Display', serif;
-background:#f3efe8;
-color:#444;
+background:#f2efe9;
+color:#4b4b4b;
 text-align:center;
-overflow:hidden;
-transition:background 1.5s ease;
 }
 
-/* MARGENES VERDES */
-
-body::before,
-body::after{
-content:"";
-position:fixed;
-top:0;
-width:140px;
-height:100%;
-background:#aeb79a;
-z-index:-1;
+.container{
+max-width:420px;
+margin:auto;
+padding:40px 20px;
 }
 
-body::before{ left:0; }
-body::after{ right:0; }
-
-/* INTRO */
-
-#intro{
-margin-top:120px;
-transition:1s;
-}
-
-#intro.fade{
-opacity:0;
-transform:scale(.9);
-pointer-events:none;
-}
-
-#intro p{
-font-size:30px;
-font-family:'Great Vibes',cursive;
-}
-
-/* SOBRE */
-
-.envelope-container{
-perspective:1200px;
-width:320px;
-height:220px;
-margin:40px auto;
-cursor:pointer;
-position:relative;
-}
-
-.envelope-base{
-width:100%;
-height:100%;
-background:repeating-linear-gradient(
-45deg,
-#f1e7d8,
-#f1e7d8 2px,
-#ede2d2 2px,
-#ede2d2 4px
-);
-border-radius:8px;
-box-shadow:0 15px 35px rgba(0,0,0,.2);
-position:absolute;
-bottom:0;
-}
-
-.envelope-flap{
-width:100%;
-height:100%;
-background:repeating-linear-gradient(
--45deg,
-#e8dcc8,
-#e8dcc8 2px,
-#e2d5c0 2px,
-#e2d5c0 4px
-);
-clip-path:polygon(0 0,100% 0,50% 70%);
-position:absolute;
-top:0;
-transform-origin:top;
-transition:1.2s;
-z-index:3;
-}
-
-.envelope-container.open .envelope-flap{
-transform:rotateX(180deg);
-}
-
-/* SELLO */
-
-.seal{
-position:absolute;
-top:52%;
-left:50%;
-transform:translate(-50%,-50%);
-width:50px;
-height:50px;
-border-radius:50%;
-background:radial-gradient(circle,#e0b84f,#9c6f1a);
-display:flex;
-align-items:center;
-justify-content:center;
-color:white;
-font-size:12px;
-z-index:10;
-}
-
-/* HERO */
-
-.hero{
-padding:70px 20px 90px 20px;
-opacity:0;
-transform:translateY(40px);
-transition:1.5s;
-}
-
-.hero.visible{
-opacity:1;
-transform:translateY(0);
-}
-
-/* TEXTO INVITACION */
-
-.texto-invitacion{
-max-width:520px;
-margin:0 auto 35px auto;
-font-size:22px;
+.intro{
+font-size:18px;
 line-height:1.6;
-font-weight:400;
+margin-bottom:30px;
 }
 
-/* NOMBRES */
-
-.hero h1{
+.nombres{
 font-family:'Great Vibes', cursive;
-font-size:72px;
-color:white;
--webkit-text-stroke:1.3px black;
-margin-bottom:20px;
-font-weight:normal;
+font-size:48px;
+margin-bottom:30px;
 }
-
-/* FOTO */
 
 .foto-boda{
 width:250px;
@@ -169,125 +44,77 @@ object-fit:cover;
 margin:20px auto 40px auto;
 display:block;
 box-shadow:0 10px 25px rgba(0,0,0,.25);
-}
-
-/* CONTENIDO */
-
-.section{
-padding:40px 20px 60px 20px;
 opacity:0;
-transform:translateY(30px);
-transition:1.5s;
+transform:scale(.9);
+animation:aparecerFoto 1.2s ease forwards;
+animation-delay:.5s;
 }
 
-.section.visible{
+@keyframes aparecerFoto{
+to{
+opacity:1;
+transform:scale(1);
+}
+}
+
+.nos-casamos{
+font-size:36px;
+letter-spacing:3px;
+margin-top:40px;
+margin-bottom:10px;
+opacity:0;
+transform:translateY(20px);
+animation:aparecerTexto 1.2s ease forwards;
+animation-delay:1s;
+}
+
+@keyframes aparecerTexto{
+to{
 opacity:1;
 transform:translateY(0);
 }
+}
 
-/* TITULO NOS CASAMOS */
-
-.titulo-boda{
-font-size:34px;
+.fecha{
+font-size:28px;
 font-weight:500;
+margin:10px 0 30px 0;
+}
+
+.seccion{
+margin-top:40px;
+}
+
+.titulo{
+font-size:20px;
 letter-spacing:2px;
-margin-bottom:5px;
-}
-
-/* SEPARADOR */
-
-.separador{
-font-size:22px;
-margin:10px 0;
-}
-
-/* FECHA */
-
-.fecha-boda{
-font-size:34px;
-font-weight:600;
 margin-bottom:10px;
 }
 
-/* BOTONES */
-
-.button{
-display:block;
-margin:20px auto;
-width:260px;
-padding:14px;
-border-radius:30px;
-background:linear-gradient(#c6a23a,#8f6b1c);
-color:white;
-text-decoration:none;
-box-shadow:0 6px 18px rgba(0,0,0,.3);
-}
-
-footer{
-padding:40px;
-border-top:6px solid #7c5a92;
-background:#eae3d8;
-opacity:0;
-transition:1.5s;
-}
-
-footer.visible{
-opacity:1;
-}
-
-/* PETALOS */
-
-.petalo{
-position:fixed;
-top:-20px;
-width:10px;
-height:10px;
-background:#e8a6b8;
-border-radius:50%;
-animation:caer linear forwards;
-}
-
-@keyframes caer{
-to{
-transform:translateY(110vh) rotate(360deg);
-}
-}
-
-/* MOBILE */
-
-@media (max-width:768px){
-
-body{
-padding:0 25px;
-}
-
-body::before,
-body::after{
-width:25px;
-}
-
-.hero h1{
-font-size:48px;
-}
-
-.envelope-container{
-width:260px;
-height:180px;
-}
-
-#intro p{
+.lugar{
 font-size:22px;
+font-weight:500;
+margin-bottom:5px;
 }
 
-.section{
-padding:40px 10px;
+.hora{
+font-size:18px;
+margin-bottom:10px;
 }
 
-.foto-boda{
-width:170px;
-height:170px;
+.vestimenta{
+font-size:18px;
 }
 
+.final{
+margin-top:60px;
+font-size:20px;
+}
+
+.nombres-final{
+font-family:'Great Vibes', cursive;
+font-size:40px;
+margin-top:10px;
 }
 
 </style>
@@ -295,150 +122,63 @@ height:170px;
 
 <body>
 
-<div id="intro">
+<div class="container">
 
-<p>Haz click en el sobre</p>
+<p class="intro">
+Te invitamos a celebrar con nosotros uno de los días más importantes de nuestra vida
+</p>
 
-<div class="envelope-container" id="sobre" onclick="abrirInvitacion()">
-
-<div class="envelope-base"></div>
-<div class="envelope-flap"></div>
-<div class="seal">B & L</div>
-
+<div class="nombres">
+Bryan & Luciana
 </div>
-</div>
-
-<div class="hero" id="hero">
-
-<div class="texto-invitacion">
-Te invitamos a celebrar con nosotros<br>
-uno de los días más importantes de nuestra vida
-</div>
-
-<h1>Bryan & Luciana</h1>
 
 <img src="foto.jpg" class="foto-boda">
 
+<div class="nos-casamos">
+Nos casamos
 </div>
 
-<div class="section" id="info">
+<div class="fecha">
+27 de Junio 2026
+</div>
 
-<div class="titulo-boda">Nos casamos</div>
+<div class="seccion">
 
-<div class="separador">❦</div>
+<div class="titulo">
+Ceremonia & Recepción
+</div>
 
-<div class="fecha-boda">27 de Junio 2026</div>
+<div class="lugar">
+Quinta Mirasol
+</div>
 
-<div id="contador" style="margin-top:15px;font-size:22px"></div>
-
-<a class="button"
-href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Boda+Bryan+y+Luciana&dates=20260627T163000/20260627T230000"
-target="_blank">
-Agregar al calendario
-</a>
-
-<a class="button"
-href="https://maps.app.goo.gl/gLvbVXCNgGFLqSWH7"
-target="_blank">
-Ver ubicación
-</a>
-
-<a class="button"
-href="https://wa.me/50377418303?text=Hola%20Bryan%20y%20Luciana,%20confirmo%20mi%20asistencia%20a%20su%20boda"
-target="_blank">
-Confirmar asistencia
-</a>
+<div class="hora">
+4:30 PM
+</div>
 
 </div>
 
-<footer id="footer">
-Con amor, 2026
-</footer>
+<div class="seccion">
 
-<script>
+<div class="titulo">
+Código de vestimenta
+</div>
 
-/* FORZAR ESTADO INICIAL AL RECARGAR */
+<div class="vestimenta">
+Formal / Elegante
+</div>
 
-window.addEventListener("pageshow", function () {
+</div>
 
-window.scrollTo(0,0)
+<div class="final">
+Te esperamos
+</div>
 
-document.body.style.overflow="hidden"
+<div class="nombres-final">
+Bryan & Luciana
+</div>
 
-document.getElementById("intro").style.display="block"
-document.getElementById("intro").classList.remove("fade")
-
-document.getElementById("sobre").classList.remove("open")
-
-document.getElementById("hero").classList.remove("visible")
-document.getElementById("info").classList.remove("visible")
-document.getElementById("footer").classList.remove("visible")
-
-})
-
-/* ABRIR SOBRE */
-
-function abrirInvitacion(){
-
-const intro=document.getElementById("intro")
-
-document.getElementById("sobre").classList.add("open")
-
-setTimeout(()=>{
-intro.classList.add("fade")
-},800)
-
-setTimeout(()=>{
-
-intro.style.display="none"
-
-document.body.style.overflow="auto"
-
-document.getElementById("hero").classList.add("visible")
-document.getElementById("info").classList.add("visible")
-document.getElementById("footer").classList.add("visible")
-
-},1600)
-
-/* PETALOS */
-
-for(let i=0;i<50;i++){
-
-let p=document.createElement("div")
-
-p.className="petalo"
-
-p.style.left=Math.random()*100+"vw"
-
-p.style.animationDuration=(5+Math.random()*3)+"s"
-
-document.body.appendChild(p)
-
-setTimeout(()=>p.remove(),8000)
-
-}
-
-}
-
-/* CUENTA REGRESIVA */
-
-const fecha=new Date("June 27 2026 16:30:00").getTime()
-
-setInterval(()=>{
-
-const ahora=new Date().getTime()
-
-const dif=fecha-ahora
-
-const dias=Math.floor(dif/(1000*60*60*24))
-
-const horas=Math.floor((dif/(1000*60*60))%24)
-
-document.getElementById("contador").innerHTML=`Faltan ${dias} días y ${horas} horas`
-
-},1000)
-
-</script>
+</div>
 
 </body>
 </html>
