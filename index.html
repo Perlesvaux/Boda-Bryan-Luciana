@@ -64,12 +64,11 @@ margin-bottom:25px;
 
 .fecha-intro{
 font-size:22px;
-font-family:'Playfair Display', serif;
 letter-spacing:2px;
 margin-top:-10px;
 margin-bottom:25px;
 }
-  
+
 .texto-abrir{
 margin-top:20px;
 font-size:18px;
@@ -233,9 +232,9 @@ margin:10px 0;
 }
 
 .fecha-boda{
-font-size:34px;
-font-weight:600;
-margin-bottom:10px;
+font-size:22px;
+font-weight:bold;
+margin-top:10px;
 }
 
 .titulo-ceremonia{
@@ -244,34 +243,34 @@ font-weight:600;
 margin-top:18px;
 }
 
-.fecha-boda{
-font-size:22px;
-font-weight:bold;
-margin-top:10px;
-}
+/* DECORACION HOJAS */
 
-/* NUEVA DECORACION */
 .decoracion-hojas{
 text-align:center;
-margin:30px 0;
+margin:20px 0;
 }
 
 .hojas-arriba,
 .hojas-abajo{
-width:70%;
-max-width:300px;
+width:65%;
+max-width:260px;
 display:block;
 margin:auto;
+filter: drop-shadow(0px 4px 6px rgba(0,0,0,0.15));
+
+opacity:0;
+transform:translateY(10px);
+transition:opacity .8s ease, transform .8s ease;
 }
 
-.hojas-arriba{
-margin-top:10px;
+/* ACTIVAR ANIMACION */
+
+#info.visible .hojas-arriba,
+#info.visible .hojas-abajo{
+opacity:1;
+transform:translateY(0);
 }
 
-.hojas-abajo{
-margin-top:5px;
-}
-  
 /* BOTONES */
 
 .button{
@@ -404,17 +403,21 @@ uno de los días más importantes de nuestra vida
 <div class="fecha-boda">27 de Junio 2026</div>
 
 <div class="decoracion-hojas">
-  <img src="hojas_top.png" class="hojas-arriba">
-  <div id="contador" style="margin-top:8px;font-size:22px"></div>
-  <img src="hojas_bottom.png" class="hojas-abajo">
+
+<img src="hojas_top.png" class="hojas-arriba">
+
+<div id="contador" style="margin-top:10px;font-size:24px"></div>
+
+<img src="hojas_bottom.png" class="hojas-abajo">
+
 </div>
-  
+
 <a class="button"
 href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Boda+Bryan+y+Luciana&dates=20260627T163000/20260627T230000"
 target="_blank">
 Agregar al calendario
 </a>
-  
+
 <div class="titulo-ceremonia">
 Ceremonia & Recepción
 </div>
@@ -438,7 +441,7 @@ href="https://waze.com/ul?q=Quinta%20Mirasol&navigate=yes"
 target="_blank">
 Abrir en Waze
 </a>
-  
+
 <a class="button"
 href="https://wa.me/50377418303?text=Hola%20Bryan%20y%20Luciana,%20confirmo%20mi%20asistencia%20a%20su%20boda"
 target="_blank">
