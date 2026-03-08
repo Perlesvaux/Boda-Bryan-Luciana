@@ -19,7 +19,6 @@ background:#f3efe8;
 color:#444;
 text-align:center;
 overflow:hidden;
-transition:background 1.5s ease;
 }
 
 /* MARGENES VERDES */
@@ -41,7 +40,7 @@ body::after{ right:0; }
 /* INTRO */
 
 #intro{
-margin-top:120px;
+margin-top:80px;
 transition:1s;
 }
 
@@ -51,9 +50,21 @@ transform:scale(.9);
 pointer-events:none;
 }
 
-#intro p{
-font-size:30px;
+.titulo-intro{
+font-size:26px;
+margin-bottom:10px;
+}
+
+.nombres-intro{
 font-family:'Great Vibes',cursive;
+font-size:60px;
+color:#000;
+margin-bottom:25px;
+}
+
+.texto-abrir{
+margin-top:20px;
+font-size:18px;
 }
 
 /* SOBRE */
@@ -62,7 +73,7 @@ font-family:'Great Vibes',cursive;
 perspective:1200px;
 width:320px;
 height:220px;
-margin:40px auto;
+margin:30px auto;
 cursor:pointer;
 position:relative;
 }
@@ -145,7 +156,6 @@ max-width:520px;
 margin:0 auto 35px auto;
 font-size:22px;
 line-height:1.6;
-font-weight:400;
 }
 
 /* NOMBRES */
@@ -153,8 +163,7 @@ font-weight:400;
 .hero h1{
 font-family:'Great Vibes', cursive;
 font-size:72px;
-color:white;
--webkit-text-stroke:1.3px black;
+color:#000;
 margin-bottom:20px;
 font-weight:normal;
 }
@@ -210,14 +219,10 @@ opacity:1;
 transform:translateY(0);
 }
 
-/* SEPARADOR */
-
 .separador{
 font-size:22px;
 margin:10px 0;
 }
-
-/* FECHA */
 
 .fecha-boda{
 font-size:34px;
@@ -238,6 +243,8 @@ color:white;
 text-decoration:none;
 box-shadow:0 6px 18px rgba(0,0,0,.3);
 }
+
+/* FOOTER */
 
 footer{
 padding:40px;
@@ -291,12 +298,8 @@ width:260px;
 height:180px;
 }
 
-#intro p{
-font-size:22px;
-}
-
-.section{
-padding:40px 10px;
+.nombres-intro{
+font-size:42px;
 }
 
 .foto-boda{
@@ -313,22 +316,24 @@ height:200px;
 
 <div id="intro">
 
-<p>Nuestra boda</p>
+<div class="titulo-intro">Nuestra boda</div>
 
-<h1>Bryan & Luciana</h1>
-
-<div class="fecha-boda">27 de Junio 2026</div>
+<div class="nombres-intro">
+Bryan & Luciana
+</div>
 
 <div class="envelope-container" id="sobre" onclick="abrirInvitacion()">
 
 <div class="envelope-base"></div>
-
-<p>Haz click en el sobre para abrir la invitación</p>  
-  
 <div class="envelope-flap"></div>
 <div class="seal">B & L</div>
-  
+
 </div>
+
+<div class="texto-abrir">
+Haz click en el sobre para abrir la invitación
+</div>
+
 </div>
 
 <div class="hero" id="hero">
@@ -392,8 +397,6 @@ Con amor, 2026
 
 <script>
 
-/* FORZAR ESTADO INICIAL AL RECARGAR */
-
 window.addEventListener("pageshow", function () {
 
 window.scrollTo(0,0)
@@ -410,8 +413,6 @@ document.getElementById("info").classList.remove("visible")
 document.getElementById("footer").classList.remove("visible")
 
 })
-
-/* ABRIR SOBRE */
 
 function abrirInvitacion(){
 
@@ -472,7 +473,6 @@ const ahora=new Date().getTime()
 const dif=fecha-ahora
 
 const dias=Math.floor(dif/(1000*60*60*24))
-
 const horas=Math.floor((dif/(1000*60*60))%24)
 
 document.getElementById("contador").innerHTML=`Faltan ${dias} días y ${horas} horas`
