@@ -183,7 +183,7 @@ width:250px;
 height:250px;
 border-radius:50%;
 object-fit:cover;
-margin:20px auto 5px auto;
+margin:20px auto 0px auto;
 display:block;
 box-shadow:0 10px 25px rgba(0,0,0,.25);
 opacity:0;
@@ -242,6 +242,43 @@ margin-bottom:10px;
 font-size:34px;
 font-weight:600;
 margin-top:18px;
+}
+
+.fecha-boda{
+font-size:22px;
+font-weight:bold;
+margin-top:10px;
+}
+
+/* NUEVA DECORACION */
+.decoracion-hojas{
+position: relative;
+width: 100%;
+max-width: 420px;
+height: 120px;
+margin: 30px auto;
+}
+
+.decoracion-hojas::before,
+.decoracion-hojas::after{
+content: "";
+position: absolute;
+left: 0;
+width: 100%;
+height: 60px;
+background-image: url("hojas.png");
+background-size: contain;
+background-repeat: no-repeat;
+background-position: center;
+}
+
+.decoracion-hojas::before{
+top: 0;
+}
+
+.decoracion-hojas::after{
+bottom: 0;
+transform: scaleY(-1);
 }
   
 /* BOTONES */
@@ -377,6 +414,8 @@ uno de los días más importantes de nuestra vida
 
 <div id="contador" style="margin-top:8px;font-size:22px"></div>
 
+<div class="decoracion-hojas"></div>
+  
 <a class="button"
 href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Boda+Bryan+y+Luciana&dates=20260627T163000/20260627T230000"
 target="_blank">
