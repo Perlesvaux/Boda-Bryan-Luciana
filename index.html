@@ -531,10 +531,21 @@ uno de los días más importantes de nuestra vida
 
 <div class="titulo-boda" id="titulo">Nuestra boda</div>
 
-<div class="separador">❦</div>
+<div class="fecha-boda">27 de Junio 2026</div>
+
+<!-- Segunda foto debajo de la fecha -->
+<img src="foto2.jpg" class="foto-boda" id="foto2">
+
+<div class="decoracion-hojas">
+    <img src="hojas_top.png" class="hojas-arriba">
+    <div id="contador" style="margin-top:3px;font-size:24px"></div>
+    <img src="hojas_bottom.png" class="hojas-abajo">
+</div>
 
 <div class="fecha-boda">27 de Junio 2026</div>
 
+
+    
 <div class="decoracion-hojas">
 
 <img src="hojas_top.png" class="hojas-arriba">
@@ -684,6 +695,7 @@ document.getElementById("info").classList.add("visible")
 document.getElementById("footer").classList.add("visible")
 
 document.getElementById("foto").classList.add("visible")
+document.getElementById("foto2").classList.add("visible");
 
 setTimeout(()=>{
 document.getElementById("titulo").classList.add("visible")
