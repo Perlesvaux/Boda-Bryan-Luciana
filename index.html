@@ -420,6 +420,59 @@ height:200px;
 
 }
 
+/* REGALOS */
+
+.regalos-section{
+    margin-top:30px;
+    text-align:center;
+}
+
+.titulo-regalos{
+    font-size:30px;
+    font-weight:600;
+    margin-bottom:8px;
+}
+
+.detalle-regalos{
+    font-size:20px;
+    margin-bottom:15px;
+    color:#444;
+}
+
+/* Icono sobre minimalista */
+.icono-regalo{
+    display:flex;
+    justify-content:center;
+}
+
+.sobre-pequeno{
+    position:relative;
+    width:60px;
+    height:40px;
+    border:2px solid #aeb79a;
+    border-radius:4px;
+    background:#f3efe8;
+}
+
+.sobre-pequeno .tapa{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:50%;
+    background:#aeb79a;
+    clip-path: polygon(0 0, 100% 0, 50% 100%);
+}
+
+.gold-separator {
+    width:60px;
+    height:2px;
+    background:#c6a23a; /* dorado */
+    margin:15px auto;
+    border-radius:2px;
+    opacity:0.8;
+}
+    
 </style>
 </head>
 
@@ -466,7 +519,7 @@ uno de los días más importantes de nuestra vida
 
 <div class="section" id="info">
 
-<div class="titulo-boda" id="titulo">Nos casamos</div>
+<div class="titulo-boda" id="titulo">Nuestra boda</div>
 
 <div class="separador">❦</div>
 
@@ -482,12 +535,16 @@ uno de los días más importantes de nuestra vida
 
 </div>
 
+
+    
 <a class="button"
 href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Boda+Bryan+y+Luciana&dates=20260627T163000/20260627T230000"
 target="_blank">
 Agregar al calendario
 </a>
 
+<div class="gold-separator"></div>
+    
 <div class="titulo-ceremonia">
 Ceremonia & Recepción
 </div>
@@ -503,7 +560,7 @@ Quinta Mirasol
 <a class="button"
 href="https://maps.app.goo.gl/gLvbVXCNgGFLqSWH7"
 target="_blank">
-Ver ubicación (Google maps)
+Abrir en Google maps
 </a>
 
 <a class="button"
@@ -512,6 +569,8 @@ target="_blank">
 Abrir en Waze
 </a>
 
+<div class="gold-separator"></div>
+    
 <div class="dresscode-section">
 
   <div class="titulo-dresscode">
@@ -538,6 +597,30 @@ Abrir en Waze
 </div>
 
 </div>
+
+<div class="gold-separator"></div>
+    
+<div class="regalos-section">
+
+  <div class="titulo-regalos">
+    Regalos
+  </div>
+
+  <div class="detalle-regalos">
+    Agradecemos tus muestras de cariño en regalo de sobre
+  </div>
+
+  <div class="icono-regalo">
+    <!-- Sobre minimalista -->
+    <div class="sobre-pequeno">
+      <div class="tapa"></div>
+      <div class="cuerpo"></div>
+    </div>
+  </div>
+
+</div>
+
+<div class="gold-separator"></div>
     
 <a class="button"
 href="https://wa.me/50377418303?text=Hola%20Bryan%20y%20Luciana,%20confirmo%20mi%20asistencia%20a%20su%20boda"
