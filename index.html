@@ -155,12 +155,12 @@ transform:rotateX(180deg);
 /* SELLO PNG */
 .seal{
     position:absolute;
-    top:52%;
+    top:63%; /* antes 52% */
     left:50%;
     transform:translate(-50%, -50%) scale(1.35); /* tamaño en PC */
     width:50px;
     height:50px;
-    object-fit:cover; /* recorta bordes blancos si existen */
+    object-fit:cover;
     z-index:10;
     pointer-events:none;
     transition:0.5s ease;
@@ -522,23 +522,20 @@ Abrir en Waze
     Formal (saco opcional)
   </div>
 
-  <div class="iconos-dresscode">
-    <!-- Icono traje tradicional -->
-    <svg class="icon-traje" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="56" height="56" fill="none" stroke="#aeb79a" stroke-width="2">
-      <!-- Chaqueta -->
-      <path d="M20 2 L28 20 L28 62 H36 V20 L44 2 Z" />
-      <!-- Corbata clásica -->
-      <path d="M32 20 L32 38 L30 42 H34 L32 38" stroke-linecap="round" stroke-linejoin="round"/>
-    </svg>
+ <div class="iconos-dresscode">
+  <!-- Icono traje más claro -->
+  <svg class="icon-traje" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="56" height="56" fill="none" stroke="#aeb79a" stroke-width="2">
+    <path d="M20 2 L28 20 L28 60 H36 V20 L44 2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M24 20 L40 20" stroke-linecap="round"/>
+    <path d="M32 20 L32 38" stroke-linecap="round"/>
+  </svg>
 
-    <!-- Icono vestido tradicional -->
-    <svg class="icon-vestido" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="56" height="56" fill="none" stroke="#aeb79a" stroke-width="2">
-      <!-- Silueta del vestido -->
-      <path d="M32 2 L40 62 H24 L32 2 Z" />
-      <!-- Pliegue central -->
-      <path d="M32 10 L32 62" stroke-linecap="round"/>
-    </svg>
-  </div>
+  <!-- Icono vestido más claro -->
+  <svg class="icon-vestido" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="56" height="56" fill="none" stroke="#aeb79a" stroke-width="2">
+    <path d="M32 2 C38 18, 46 50, 32 62 C18 50, 26 18, 32 2" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="32" y1="10" x2="32" y2="62" stroke-linecap="round"/>
+  </svg>
+</div>
 
 </div>
     
