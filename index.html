@@ -30,7 +30,7 @@ position:fixed;
 top:0;
 width:140px;
 height:100%;
-background:#c3b1e1;
+background:#aeb79a;
 z-index:-1;
 }
 
@@ -129,7 +129,7 @@ transform:rotateX(180deg);
 position:absolute;
 top:52%;
 left:50%;
-transform:translate(-50%,-50%);
+transform:translate(-50%,-50%) scale(1);
 width:50px;
 height:50px;
 border-radius:50%;
@@ -140,6 +140,14 @@ justify-content:center;
 color:white;
 font-size:12px;
 z-index:10;
+transition:0.5s ease;
+}
+
+/* DESAPARECER SELLO AL ABRIR SOBRE */
+
+.envelope-container.open .seal{
+opacity:0;
+transform:translate(-50%,-50%) scale(0.6);
 }
 
 /* HERO */
@@ -272,9 +280,9 @@ max-width:250px;
 display:block;
 margin:auto;
 
-/* integra las hojas con el fondo del papel */
+/* integra las hojas con el fondo */
 mix-blend-mode:multiply;
-opacity:0.95;
+opacity:0.9;
 
 /* sombra suave elegante */
 filter: drop-shadow(0px 3px 5px rgba(0,0,0,0.12));
@@ -393,14 +401,14 @@ Bryan & Luciana
 </div>
 
 <div class="fecha-intro">
-27 · Junio · 2026..
+27 · Junio · 2026...
 </div>
 
 <div class="envelope-container" id="sobre" onclick="abrirInvitacion()">
 
 <div class="envelope-base"></div>
 <div class="envelope-flap"></div>
-<div class="seal">B & L</div>
+<img src="sello.png" class="seal" alt="Sello B y L">
 
 </div>
 
@@ -559,6 +567,14 @@ setInterval(()=>{
 const ahora=new Date().getTime()
 
 const dif=fecha-ahora
+
+if(dif<=0){
+
+document.getElementById("contador").innerHTML="¡Hoy es el gran día!"
+
+return
+
+}
 
 const dias=Math.floor(dif/(1000*60*60*24))
 const horas=Math.floor((dif/(1000*60*60))%24)
