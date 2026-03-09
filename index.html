@@ -123,30 +123,35 @@ z-index:3;
 transform:rotateX(180deg);
 }
 
-/* SELLO */
-
+/* SELLO PNG */
 .seal{
-position:absolute;
-top:52%;
-left:50%;
-transform:translate(-50%,-50%) scale(1.35);
-
-width:50px;
-height:50px;
-
-object-fit:cover;
-
-z-index:10;
-pointer-events:none;
-
-transition:0.5s ease;
+    position:absolute;
+    top:52%;
+    left:50%;
+    transform:translate(-50%, -50%) scale(1.35); /* tamaño en PC */
+    width:50px;
+    height:50px;
+    object-fit:cover; /* recorta bordes blancos si existen */
+    z-index:10;
+    pointer-events:none;
+    transition:0.5s ease;
 }
 
-/* DESAPARECER SELLO AL ABRIR SOBRE */
-
+/* DESAPARECER SELLO AL ABRIR EL SOBRE */
 .envelope-container.open .seal{
-opacity:0;
-transform:translate(-50%,-50%) scale(0.9);
+    opacity:0;
+    transform:translate(-50%, -50%) scale(0.9); /* escala más pequeña al desaparecer */
+}
+
+/* AJUSTE RESPONSIVE PARA MÓVIL */
+@media (max-width:768px){
+    .seal{
+        transform:translate(-50%, -50%) scale(1.1); /* más pequeño en celulares */
+    }
+
+    .envelope-container.open .seal{
+        transform:translate(-50%, -50%) scale(0.7);
+    }
 }
 
 /* HERO */
