@@ -19,13 +19,6 @@ background:#f3efe8;
 color:#444;
 text-align:center;
 overflow:hidden;
-
-/* FLORES FIJAS */
-background-image: url("flores_top.png"), url("flores_bottom.png");
-background-repeat: no-repeat, no-repeat;
-background-position: top center, bottom center;
-background-size: 100% auto, 100% auto;
-background-attachment: fixed, fixed;
 }
 
 .dresscode{
@@ -567,42 +560,12 @@ display:block;
 margin:6px auto -5px auto;
 opacity:0.9;
 }
-
-.flores-top{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-pointer-events:none;
-z-index:5;
-opacity:0;
-transition:1.5s;
-}
-
-.flores-bottom{
-position:fixed;
-bottom:0;
-left:0;
-width:100%;
-pointer-events:none;
-z-index:5;
-opacity:0;
-transition:1.5s;
-}
-
-.flores-top.visible,
-.flores-bottom.visible{
-opacity:1;
-}
     
 </style>
 </head>
 
 <body>
 
-<img src="flores_top.png" class="flores-top">
-<img src="flores_bottom.png" class="flores-bottom">
-    
 <div id="intro">
 
 <div class="titulo-intro">¡Nos casamos!</div>
@@ -812,8 +775,6 @@ intro.style.display="none"
 document.body.style.overflow="auto"
 
 document.getElementById("hero").classList.add("visible")
-document.querySelector(".flores-top").classList.add("visible")
-document.querySelector(".flores-bottom").classList.add("visible")
 document.getElementById("info").classList.add("visible")
 document.getElementById("footer").classList.add("visible")
 
