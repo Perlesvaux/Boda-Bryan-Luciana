@@ -561,6 +561,23 @@ display:block;
 margin:6px auto -5px auto;
 opacity:0.9;
 }
+
+.boton-musica{
+display:inline-block;
+margin-bottom:25px;
+padding:10px 18px;
+border-radius:25px;
+background:linear-gradient(#c6a23a,#8f6b1c);
+color:white;
+font-size:16px;
+cursor:pointer;
+box-shadow:0 4px 12px rgba(0,0,0,.25);
+transition:0.3s;
+}
+
+.boton-musica:hover{
+transform:scale(1.05);
+}
     
 </style>
 </head>
@@ -604,6 +621,10 @@ Haz click en el sobre para abrir la invitación.
     
 <div class="hero" id="hero">
 
+<div class="boton-musica" onclick="toggleMusica()">
+🎵 Reproducir música
+</div>
+    
 <div class="texto-invitacion">
 Te invitamos a celebrar con nosotros<br>
 uno de los días más importantes de nuestra vida.
@@ -781,6 +802,8 @@ document.getElementById("hero").classList.add("visible")
 document.getElementById("info").classList.add("visible")
 document.getElementById("footer").classList.add("visible")
 
+document.getElementById("musica").play();
+    
 document.getElementById("foto").classList.add("visible")
 document.getElementById("foto2").classList.add("visible");
 document.getElementById("foto3").classList.add("visible");
@@ -836,7 +859,23 @@ document.getElementById("contador").innerHTML=`Faltan ${dias} días y ${horas} h
 
 },1000)
 
+function toggleMusica(){
+
+const musica = document.getElementById("musica")
+
+if(musica.paused){
+musica.play()
+}else{
+musica.pause()
+}
+
+}
+    
 </script>
 
+<audio id="musica" loop>
+<source src="cancion.mp3" type="audio/mpeg">
+</audio>
+    
 </body>
 </html>
