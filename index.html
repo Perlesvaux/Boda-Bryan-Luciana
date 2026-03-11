@@ -627,8 +627,8 @@ Haz click en el sobre para abrir la invitación.
     
 <div class="hero" id="hero">
 
-<div class="boton-musica" onclick="toggleMusica()">
-🎵 Reproducir música
+<div class="boton-musica" onclick="toggleMusica()" id="icono-musica">
+🎵 Activar música
 </div>
     
 <div class="texto-invitacion">
@@ -790,11 +790,6 @@ document.getElementById("footer").classList.remove("visible")
 
 function abrirInvitacion(){
 
-const musica = document.getElementById("musica");
-
-musica.volume = 0.6; // opcional
-musica.play().catch(() => {});
-    
 const intro=document.getElementById("intro")
 
 document.getElementById("sobre").classList.add("open")
