@@ -784,6 +784,9 @@ document.getElementById("footer").classList.remove("visible")
 
 function abrirInvitacion(){
 
+document.getElementById("musica").play();
+document.getElementById("icono-musica").textContent = "🔊";
+    
 const intro=document.getElementById("intro")
 
 document.getElementById("sobre").classList.add("open")
@@ -802,7 +805,7 @@ document.getElementById("hero").classList.add("visible")
 document.getElementById("info").classList.add("visible")
 document.getElementById("footer").classList.add("visible")
 
-document.getElementById("musica").play();
+
     
 document.getElementById("foto").classList.add("visible")
 document.getElementById("foto2").classList.add("visible");
@@ -862,11 +865,18 @@ document.getElementById("contador").innerHTML=`Faltan ${dias} días y ${horas} h
 function toggleMusica(){
 
 const musica = document.getElementById("musica")
+const icono = document.getElementById("icono-musica")
 
 if(musica.paused){
+
 musica.play()
+icono.textContent = "🔊"
+
 }else{
+
 musica.pause()
+icono.textContent = "🔇"
+
 }
 
 }
