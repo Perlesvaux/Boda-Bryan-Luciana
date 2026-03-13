@@ -584,28 +584,6 @@ transition:0.3s;
 .boton-musica:hover{
 transform:scale(1.05);
 }
-
-/* ESPACIOS RESERVADOS DESDE EL LINK */
-
-function obtenerParametro(nombre){
-
-const urlParams = new URLSearchParams(window.location.search)
-
-return urlParams.get(nombre)
-
-}
-
-const espacios = obtenerParametro("p")
-
-if(espacios){
-
-document.getElementById("espacios").textContent = espacios
-
-}else{
-
-document.getElementById("espacios").textContent = "2"
-
-}
     
 </style>
 </head>
@@ -617,7 +595,7 @@ document.getElementById("espacios").textContent = "2"
 <div class="titulo-intro">¡Nos casamos!</div>
 
 <div class="nombres-intro">
-Prueba 2
+Prueba 3
 </div>
 
 <div class="fecha-intro">
@@ -640,7 +618,7 @@ Haz click en el sobre para abrir la invitación.
 <div class="reserva">
   Hemos reservado 
   <span class="reserva-numero">
-    <span class="numero" id="espacios"></span>
+    <span class="numero">2</span>
   </span>
   espacio(s) para ti.
 </div>
