@@ -12,7 +12,7 @@
 
 body{
 margin:0;
-padding:0 clamp(20px, 8vw, 140px);
+padding:0 140px;
 box-sizing:border-box;
 font-family:'Playfair Display', serif;
 background:#f3efe8;
@@ -54,7 +54,7 @@ body::after{
 content:"";
 position:fixed;
 top:0;
-width:clamp(20px,8vw,140px);
+width:140px;
 height:100%;
 background:#aeb79a;
 z-index:-1;
@@ -285,6 +285,11 @@ opacity:0.8;
 .titulo-boda.visible{
 opacity:1;
 transform:translateY(0);
+}
+
+.separador{
+font-size:20px;
+margin:10px 0;
 }
 
 .titulo-ceremonia{
@@ -899,7 +904,7 @@ document.getElementById("espacios").textContent = espacios
 
 document.getElementById("espacios").textContent = "2"
 
-}    
+}
     
 </script>
 
