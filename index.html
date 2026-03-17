@@ -956,23 +956,18 @@ window.onbeforeunload = function () {
 window.scrollTo(0,0)
 }
 
-document.addEventListener("visibilitychange", function(){
-
 const musica = document.getElementById("musica")
 
-// Cuando cambias de pestaña o minimizas (PC + algunos móviles)
 document.addEventListener("visibilitychange", function(){
   if(document.hidden){
     musica.pause()
   }
 })
 
-// Cuando sales de la página (mejor soporte en móvil)
 window.addEventListener("pagehide", function(){
   musica.pause()
 })
 
-// Cuando cambias de app / bloqueas pantalla (móviles)
 window.addEventListener("blur", function(){
   musica.pause()
 })
