@@ -10,6 +10,19 @@
 
 <style>
 
+
+.contenedor-estatico {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100%;
+}
+
+.contenedor-dinamico {
+  overflow-y: auto; 
+  /*height: 100vh;*/
+}
+
 body{
 margin:0;
 padding:0 140px;
@@ -623,7 +636,14 @@ line-height:1;
 </style>
 </head>
 
-<body>
+<body >
+
+    <div class="contenedor-estatico">
+      <img src="flores_top.png"/>
+
+    <div class="contenedor-dinamico">
+
+
 
 <div class="boton-musica" onclick="toggleMusica()" id="icono-musica">
 🔇
@@ -1012,5 +1032,15 @@ musica.addEventListener("pause", () => {
 <source src="./cancion.mp3" type="audio/mpeg">
 </audio>
     
+
+
+
+    </div>
+
+
+      <img src="flores_bottom.png"/>
+
+      </div>
+
 </body>
 </html>
