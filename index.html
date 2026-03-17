@@ -578,40 +578,29 @@ opacity:0.9;
 }
 
 .boton-musica{
-position:absolute;
-top:20px;
+position:fixed;
+
+bottom:20px;
 right:20px;
 
-display:inline-flex;
+width:45px;
+height:45px;
+
+display:flex;
 align-items:center;
 justify-content:center;
 
-padding:10px;
 border-radius:50%;
 
 background:linear-gradient(#c6a23a,#8f6b1c);
 color:white;
-font-size:22px;
+font-size:20px;
 
 cursor:pointer;
 box-shadow:0 4px 12px rgba(0,0,0,.25);
 z-index:9999;
 
 transition:0.3s;
-}
-
-.hero{
-position:relative;
-}  
-
-.boton-musica:hover{
-transform:scale(1.1);
-}
-
-@media (max-width:768px){
-  .boton-musica{
-    bottom:70px;
-  }
 }
   
 </style>
@@ -802,43 +791,46 @@ Con amor, 2026
   
 document.addEventListener("DOMContentLoaded", function(){
 
-// 🔥 FORZAR ESTADO INICIAL SIEMPRE
+const abierta = localStorage.getItem("invitacionAbierta")
+
+// 👉 SI YA LA ABRIÓ
+if(abierta === "true"){
+
+document.getElementById("intro").style.display="none"
+document.body.style.overflow="auto"
+
+document.getElementById("hero").classList.add("visible")
+document.getElementById("info").classList.add("visible")
+document.getElementById("footer").classList.add("visible")
+
+document.getElementById("foto").classList.add("visible")
+document.getElementById("foto2").classList.add("visible")
+document.getElementById("foto3").classList.add("visible")
+document.getElementById("titulo").classList.add("visible")
+
+}else{
+
+// 👉 SI NO LA HA ABIERTO
 window.scrollTo(0,0)
 document.body.style.overflow="hidden"
 
-// Mostrar intro
 const intro = document.getElementById("intro")
 intro.style.display="block"
 intro.classList.remove("fade")
 
-// Cerrar sobre
 document.getElementById("sobre").classList.remove("open")
 
-// Ocultar todo lo demás
 document.getElementById("hero").classList.remove("visible")
 document.getElementById("info").classList.remove("visible")
 document.getElementById("footer").classList.remove("visible")
 
-// Reset fotos
-document.getElementById("foto").classList.remove("visible")
-document.getElementById("foto2").classList.remove("visible")
-document.getElementById("foto3").classList.remove("visible")
+}
 
-// Reset título
-document.getElementById("titulo").classList.remove("visible")
-
-// Reset música
-const musica = document.getElementById("musica")
-musica.pause()
-musica.currentTime = 0
-
-document.getElementById("icono-musica").textContent = "🔇"
-
-window.addEventListener("load", function(){
-  window.scrollTo(0,0)
 })
   
 function abrirInvitacion(){
+
+localStorage.setItem("invitacionAbierta", "true")
 
 const intro=document.getElementById("intro")
 
