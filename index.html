@@ -579,27 +579,38 @@ opacity:0.9;
 
 .boton-musica{
 position:fixed;
-top:20px;
+
+bottom:20px;   /* 👈 en vez de top */
 right:20px;
-width:50px;
-height:50px;
+
+display:inline-flex;
+align-items:center;
+justify-content:center;
+
+padding:10px;
 border-radius:50%;
+
 background:linear-gradient(#c6a23a,#8f6b1c);
 color:white;
 font-size:22px;
-display:flex;
-align-items:center;
-justify-content:center;
+
 cursor:pointer;
 box-shadow:0 4px 12px rgba(0,0,0,.25);
 z-index:9999;
+
 transition:0.3s;
 }
 
 .boton-musica:hover{
 transform:scale(1.1);
 }
-    
+
+@media (max-width:768px){
+  .boton-musica{
+    bottom:70px;
+  }
+}
+  
 </style>
 </head>
 
@@ -786,23 +797,33 @@ Con amor, 2026
 
 <script>
 
-window.addEventListener("pageshow", function () {
+window.addEventListener("load", function () {
 
-// 👉 LIMPIAR URL (quita ?p=)
-window.history.replaceState({}, document.title, window.location.pathname)
-
+// Forzar SIEMPRE inicio desde el sobre
 window.scrollTo(0,0)
 
 document.body.style.overflow="hidden"
 
-document.getElementById("intro").style.display="block"
-document.getElementById("intro").classList.remove("fade")
+// Mostrar intro
+const intro = document.getElementById("intro")
+intro.style.display="block"
+intro.classList.remove("fade")
 
+// Cerrar sobre
 document.getElementById("sobre").classList.remove("open")
 
+// Ocultar contenido
 document.getElementById("hero").classList.remove("visible")
 document.getElementById("info").classList.remove("visible")
 document.getElementById("footer").classList.remove("visible")
+
+// 🔥 IMPORTANTE: detener música al recargar
+const musica = document.getElementById("musica")
+musica.pause()
+musica.currentTime = 0
+
+// Reset icono
+document.getElementById("icono-musica").textContent = "🔇"
 
 })
 
@@ -931,6 +952,10 @@ document.getElementById("espacios").textContent = espacios
 
 document.getElementById("espacios").textContent = "2"
 
+}
+
+window.onbeforeunload = function () {
+window.scrollTo(0,0)
 }
   
 </script>
