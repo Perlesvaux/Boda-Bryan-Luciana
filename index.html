@@ -985,23 +985,27 @@ let musica = document.getElementById("musica")
 document.addEventListener("visibilitychange", () => {
   if (document.hidden) {
     musica.pause()
+    document.getElementById("icono-musica").textContent = "🔇"
   }
 })
 
 // Detecta cuando cambias de app (Android)
 window.addEventListener("pagehide", () => {
   musica.pause()
+  document.getElementById("icono-musica").textContent = "🔇"
 })
 
 // Detecta pérdida de foco (algunos navegadores)
 window.addEventListener("blur", () => {
   musica.pause()
+  document.getElementById("icono-musica").textContent = "🔇"
 })
 
 // 🔥 CLAVE: cuando el usuario vuelve, NO reanudar automáticamente
 document.addEventListener("visibilitychange", () => {
-  if (!document.hidden) {
+  if (document.hidden) {
     musica.pause()
+    document.getElementById("icono-musica").textContent = "🔇"
   }
 })
   
