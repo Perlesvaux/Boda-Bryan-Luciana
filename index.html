@@ -639,7 +639,9 @@ line-height:1;
 <body >
 
     <div class="contenedor-estatico">
-      <img src="flores_top.png"/>
+      <div class="flores-arriba" style="height: 100px; opacity: 0.5; z-index: -1;">
+        <img src="flores_top.png"/>
+      </div>
 
     <div class="contenedor-dinamico">
 
@@ -1033,12 +1035,13 @@ musica.addEventListener("pause", () => {
 </audio>
     
 
+      <div class="flores-abajo" style="opacity: 0.5; position: absolute; bottom: 0; z-index: -1;">
+        <img src="flores_bottom.png" style="" />
+      </div>
 
 
     </div>
 
-
-      <img src="flores_bottom.png"/>
 
       </div>
 
